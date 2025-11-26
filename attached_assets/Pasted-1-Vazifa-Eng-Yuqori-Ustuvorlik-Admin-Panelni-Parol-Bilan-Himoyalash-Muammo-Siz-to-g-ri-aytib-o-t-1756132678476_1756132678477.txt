@@ -1,0 +1,61 @@
+1-Vazifa (Eng Yuqori Ustuvorlik): Admin Panelni Parol Bilan Himoyalash
+Muammo: Siz to'g'ri aytib o'tdingiz, hozirda /admin sahifasi ochiq va unga har kim kira oladi. Bu juda katta xavfsizlik muammosi.
+
+Yechim Rejasi:
+
+Login Sahifasi Yaratish: /admin yo'liga kirilganda, agar foydalanuvchi tizimga kirmagan bo'lsa, uni avtomatik /login sahifasiga yo'naltirish kerak.
+
+Autentifikatsiya Mantig'i (Backend):
+
+Siz bergan Login (Akramjon) va Parol (Gisobot201415*)'ni xavfsiz tarzda saqlash kerak. DIQQAT: Parolni ma'lumotlar bazasiga to'g'ridan-to'g'ri yozish mumkin emas! Uni bcrypt kabi kutubxona yordamida heshlab (hashed) saqlash shart.
+
+Foydalanuvchi login va parolni kiritganda, backend kiritilgan parolni heshlab, bazadagi hesh bilan solishtirishi kerak.
+
+Sessiyalarni Boshqarish (Middleware):
+
+Foydalanuvchi to'g'ri kirganidan so'ng, unga maxsus sessiya (session) yoki token (JWT) beriladi.
+
+/admin bilan boshlanadigan barcha sahifalar uchun maxsus "middleware" yoziladi. Bu middleware har bir so'rovda foydalanuvchining sessiyasi yoki tokeni borligini tekshiradi. Agar yo'q bo'lsa, uni login sahifasiga qaytarib yuboradi.
+
+Bu vazifani darhol, boshqa ishlardan oldin bajarish kerak.
+
+2-Vazifa (Yuqori Ustuvorlik): Replit'dagi "Oq Ekran" Muammosini Hal Qilish
+Muammo: image_8b1038.png'da ko'rinib turibdiki, Replit'ning o'zida dastur ishga tushmayapti (oq ekran). Lekin alohida brauzerda (replit.dev linki orqali) ishlayapti. Bu dasturchi uchun juda noqulay va xatoliklarni topishni qiyinlashtiradi.
+
+Diagnostika va Yechim Rejasi:
+
+Konsolni Tekshirish: Replit'dagi "oq ekran" paydo bo'lganda, birinchi navbatda o'ng tarafdagi "Console" va "Shell" oynalarini tekshirish kerak. Dastur ishga tushayotganda biror xatolik bo'lsa, u shu oynalarda ko'rinadi.
+
+Port va Host'ni Tekshirish: Replit dasturlari 0.0.0.0 host'ida va Replit tomonidan berilgan process.env.PORT'da ishlashi kerak. Kodda bu to'g'ri sozlanganligini tekshirish lozim.
+
+package.json Faylini Tekshirish: scripts bo'limidagi dev yoki start buyrug'i to'g'ri yozilganligini tekshirish kerak.
+
+Bu muammoni hal qilmasdan turib, yangi funksiyalarni qo'shish juda qiyin bo'ladi.
+
+3-Vazifa (O'rta Ustuvorlik): Maqolalarni Boshqarish Funksiyalarini Qo'shish (CRUD)
+Muammo: Admin panelda (image_8b1472.png) maqolalarni tahrirlash, o'chirish kabi muhim imkoniyatlar yo'q.
+
+Yechim Rejasi:
+
+Bu to'liq CRUD (Create, Read, Update, Delete) funksionalligini qo'shishni talab qiladi:
+
+O'zgartirish (Update): "Maqolalarni Boshqarish" ro'yxatidagi har bir maqola yoniga "Tahrirlash" (✏️) tugmasini qo'shish. Bu tugma bosilganda, maqolaning sarlavhasi, matni, kategoriyasi va rasmini o'zgartirish mumkin bo'lgan sahifa ochilishi kerak.
+
+O'chirish (Delete): Har bir maqola yoniga "O'chirish" (🗑️) tugmasini qo'shish. Xatolik bilan o'chirib yuborishni oldini olish uchun, bu tugma bosilganda "Haqiqatan ham o'chirmoqchimisiz?" degan tasdiqlash oynasi chiqishi kerak.
+
+Rasm O'zgartirish: "Tahrirlash" sahifasida maqolaning hozirgi rasmini ko'rsatish va yangi rasm URL'ini kiritish yoki Unsplash'dan yangi rasm qidirish imkoniyatini qo'shish.
+
+Yangi Maqola Qo'shish (Create): Admin panelda "Yangi Maqola Yaratish" tugmasini qo'shish. Bu AI'dan mustaqil ravishda, qo'lda yangilik kiritish imkonini beradi.
+
+Xulosa va Harakatlar Rejasi:
+Siz aytganidek, image_8b0fb8.jpg'da saytning o'zi ishlayapti, lekin bu bizni xotirjam qilmasligi kerak. Tizim barqaror va xavfsiz bo'lishi shart.
+
+Shu sababli, harakatlar ketma-ketligi quyidagicha bo'lishi kerak:
+
+1-Qadam: Admin panelni zudlik bilan parol bilan yopamiz.
+
+2-Qadam: Replit'dagi oq ekran muammosini topib, tuzatamiz. Bu keyingi ishlarni osonlashtiradi.
+
+3-Qadam: Shundan keyingina admin panelga maqolalarni boshqarish uchun yangi funksiyalarni qo'shishni boshlaymiz.
+
+Ushbu reja asosida harakat qilishni taklif qilaman.

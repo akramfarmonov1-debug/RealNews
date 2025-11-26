@@ -1,0 +1,44 @@
+Mavzu: Yangi Logotipni Saytga To'liq Integratsiya Qilish
+
+Salom! Loyiha uchun yangi logotip tayyor bo'ldi. Iltimos, uni quyidagi barcha kerakli joylarga qo'shib chiqing:
+
+1. Asosiy Logo (Header):
+
+Saytning yuqori qismidagi (navigation bar) asosiy logotipni almashtiring.
+
+Bu logotip bosilganda har doim bosh sahifaga olib borishi kerak.
+
+2. Favicon:
+
+Brauzerning tab (vkladka) qismida ko'rinadigan kichik ikonkani (favicon) yangilang. Barcha brauzerlarda to'g'ri ko'rinishi uchun kerakli formatlarda bo'lishi lozim.
+
+3. PWA Ikonkalari (Mobil ilova uchun):
+
+Veb-saytni telefonga "ilova" sifatida "Ishchi stoliga qo'shish" (Add to Home Screen) qilinganda paydo bo'ladigan ikonkani sozlang.
+
+Buning uchun manifest.json faylidagi ikonkalarni yangi logotipga almashtirish kerak (turli o'lchamlarda: 192x192, 512x512 va hokazo).
+
+4. Ijtimoiy Media uchun Standart Rasm (Open Graph Image):
+
+Saytning biror sahifasi Telegram, Facebook yoki boshqa ijtimoiy tarmoqlarda ulashilganda, havola yonida avtomatik paydo bo'ladigan standart rasmni shu logotipga o'zgartiring (og:image metategi).
+
+5. Admin Paneli Logotipi:
+
+Admin panelining ichida ham eski logotip bo'lsa, uni yangisiga almashtirib, professional ko'rinish bering.
+
+Texnik Talablar va Muhim Tavsiya:
+Taqdim etilgan rasm .jpg formatida. Lekin favicon va PWA ikonkalari uchun bizga turli o'lchamdagi .png formatidagi (shaffof fonli - transparent background) versiyalari kerak bo'ladi.
+
+Bu jarayonni qo'lda qilish qiyin. Shuning uchun, barcha kerakli formatlarni bir urinishda yaratish uchun RealFaviconGenerator kabi bepul onlayn vositadan foydalanishni qat'iy tavsiya qilaman:
+
+Havola: https://realfavicongenerator.net/
+
+Qanday ishlatiladi:
+
+Shu saytga kirib, logotip rasmini yuklaysiz.
+
+U siz uchun barcha kerakli formatdagi fayllarni (favicon.ico, apple-touch-icon.png, android-chrome-*.png va hokazo) avtomatik generatsiya qilib beradi.
+
+Shuningdek, u bu fayllarni saytning <head> qismiga qo'yish uchun tayyor HTML kodni ham taqdim etadi.
+
+Ushbu reja asosida logotipni saytga to'liq integratsiya qilishingizni so'rayman.

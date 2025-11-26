@@ -1,0 +1,71 @@
+Loyihaning boshida tuzilgan ushbu reja uning poydevori qanchalik puxta o'ylanganini ko'rsatib turibdi. Bu bizga hozirgi holatimizni baholash va keyingi qadamlarni asl maqsadga mos ravishda to'g'rilab olish uchun ajoyib imkoniyat beradi.
+
+Keling, ushbu reja asosida loyihamizning hozirgi holatini tahlil qilib chiqamiz ("Gap Analysis").
+
+Loyihaning Reja bo'yicha Statusi:
+1. Backend (Server qismi):
+
+Avtomatik ma'lumot yig'ish (RSS + node-cron): ✅ Bajarilgan va ishlamoqda.
+
+AI yordamida tarjima (Gemini 1.5 Flash): ✅ Bajarilgan va ishlamoqda.
+
+Ma'lumotlar bazasi (PostgreSQL + Drizzle): ✅ Bajarilgan va ishlamoqda.
+
+API (Node.js + Express.js): ✅ Asosiy qismi bajarilgan va ishlamoqda.
+
+Xulosa: Backend va tizimning "miyasi" deyarli to'liq (95%) rejadagidek qurilgan.
+
+2. Frontend (Mijoz qismi - Veb-sayt):
+
+Texnologiyalar (React, Vite, Tailwind): ✅ Poydevor qurilgan.
+
+Bosh sahifa (Yangiliklar ko'rsatish): ✅ Asosiy qismi bajarilgan.
+
+Maqola sahifasi: ✅ Bajarilgan.
+
+Ma'lumotlarni olish (TanStack Query): ✅ Integratsiya qilingan.
+
+Qidiruv funksiyasi: ⏳ Hozirda ishlanmoqda.
+
+Xulosa: Frontendning asosiy strukturasi tayyor, hozir biz uning funksionalligini boyitish ustida ishlayapmiz.
+
+3. Admin Paneli:
+
+RSS Manbalarini Boshqarish: 🟡 Qisman bajarilgan. (Sizning hujjatda rss-source-form.tsx tilga olingan, demak, qo'shish qismi mavjud, lekin to'liq tahrirlash, o'chirish kabi imkoniyatlarni qayta tekshirish kerak).
+
+Tizim Sozlamalari (Postlar soni, ishlash vaqti, AI sozlamalari): ❌ Hali boshlanmagan. Bu rejaning eng muhim, lekin e'tiborimizdan chetda qolgan qismi ekan.
+
+Umumiy Xulosa va Yangilangan Yo'l Xaritasi
+Rahmat, ushbu hujjat tufayli biz hozirgacha faqat foydalanuvchi ko'radigan qismga (Frontend UX) e'tibor qaratib, Admin panelining nozik sozlamalarini keyinga qoldirganimizni aniqladik.
+
+Bu mutlaqo normal holat. Odatda, avval mahsulotning asosiy funksiyasi ishga tushirilib, keyin uni boshqarish vositalari takomillashtiriladi. Biz tanlagan yo'l ham to'g'ri.
+
+Keling, ushbu yangi ma'lumotlar asosida yo'l xaritasini biroz yangilaymiz:
+
+1-Bosqich: Ommaviy Saytni Tayyorlash (Hozirgi ustuvorlik)
+
+Maqsad: Foydalanuvchilar uchun to'liq funksional va qulay veb-sayt yaratish.
+
+Qidiruv Tizimi (Hozir ishlanmoqda).
+
+Rasm Integratsiyasi (Unsplash API) (Rejalashtirilgan).
+
+Mobil UI Optimizatsiyasi (Rejalashtirilgan).
+
+2-Bosqich: Foydalanuvchini Jalb Qilish
+
+Maqsad: Saytga kirgan foydalanuvchilarni ushlab qolish va faolligini oshirish.
+
+"Ommabop Yangiliklar" & "O'xshash Maqolalar".
+
+Newsletter Tizimi.
+
+3-Bosqich: Tizimni Boshqarish va Nazorat Qilish (Asl Rejadagi Yetishmovchiliklar)
+
+Maqsad: Admin uchun tizimni to'liq boshqarish imkoniyatini yaratish.
+
+Admin Panelini Kengaytirish: Rejadagi barcha sozlamalarni (kunlik postlar soni, ishlash vaqti, AI modelini tanlash) qo'shish.
+
+RSS Manbalarini Boshqarishni Yakunlash: Manbalarni to'liq tahrirlash, o'chirish va vaqtincha o'chirib qo'yish funksiyalarini qo'shish.
+
+Sizningcha, ushbu yangilangan yo'l xaritasi ma'qulmi? Biz hozirgi ustuvorlikni (1-Bosqich) saqlab qolgan holda, keyingi asosiy e'tiborni 3-Bosqichdagi Admin panelini rejadagi ideal holatiga keltirishga qaratamiz.

@@ -1,0 +1,61 @@
+Asosiy Muammolar:
+Ikkita Header: Yuqoridagi jigarrang va pastdagi oq chiziq bir-biridan alohida va juda ko'p elementni o'z ichiga olgan.
+
+Tartibsizlik: Logotip, menyu, stories, bildirishnomalar va qidiruv — hammasi bir qatorda siqilib yotibdi.
+
+Ierarxiya Yo'qligi: Nima muhimroq, nima ikkinchi darajali ekani bilinmaydi.
+
+G'oya A: Kompakt va Funksional Qayta Joylashtirish (Eng Yaxshi Tavsiya)
+Bu variantda biz jigarrang chiziqni butunlay olib tashlaymiz va uning eng kerakli elementlarini oq chiziqqa chiroyli qilib joylashtiramiz.
+
+1. Yuqoridagi Jigarrang Chiziqni Olib Tashlaymiz:
+
+Ijtimoiy tarmoq ikonkalari (f, telegram): Ularni saytning eng pastki qismiga (footer) tushiramiz. Bu zamonaviy saytlardagi standart.
+
+Sana va Ob-havo: Bularni asosiy menyu qatoriga, lekin kichikroq va kamroq ahamiyatli shriftda joylashtiramiz.
+
+Tilni o'zgartirish (O'zbek): Buni ham asosiy menyuning o'ng tarafidagi ikonkalarga yaqin joyga ko'chiramiz.
+
+2. Asosiy Oq Menyuni Ikki Qavatli Qilamiz (lekin bitta blokda):
+Bu yondashuv hamma narsani tartibga soladi va vizual ierarxiya yaratadi.
+
+Qavat 1: Brending va Amallar
+Bu qavatda faqat eng muhim 3 ta element qoladi: Logotip, Qidiruv va qo'shimcha amallar.
+
+Chap taraf: Logotip (RN RealNews).
+
+O'ng taraf: Faqat ikonkalardan iborat guruh: Qidiruv (🔍), Bildirishnomalar (🔔), Tilni o'zgartirish (🇺🇿 yoki 🌐). Qidiruv ikonkasini bosganda, qidiruv maydoni chiroyli effekt bilan ochiladi.
+
+Qavat 2: Asosiy Navigatsiya (Menyu)
+Bu qavatda faqat sayt bo'limlari qoladi.
+
+Chap taraf: Bosh Sahifa, Stories, Dunyo, Iqtisodiyot, Madaniyat, O'zbekiston, Siyosat, Sport, Texnologiya.
+
+O'ng taraf: Kichik shriftda Sana va Ob-havo.
+
+Matnli Maket (Taxminiy ko'rinishi):
+------------------------------------------------------------------------------------
+|                                                                                  |
+| [RN RealNews]                                  [🔍 Qidiruv] [🔔] [🇺🇿 O'zbek]     |
+|                                                                                  |
+| Bosh Sahifa | Stories | Dunyo | Iqtisodiyot | ... | Texnologiya   (25-avgust, +5°C) |
+|                                                                                  |
+------------------------------------------------------------------------------------
+| 🚨 LIVE | Globallashuvning yangi to'lqini O'zbekistonga qanday ta'sir qiladi       |
+------------------------------------------------------------------------------------
+G'oya B: Minimalistik Yondashuv ("Hamburger" menyu)
+Bu variantda biz faqat eng kerakli 3-4 ta bo'limni qoldiramiz, qolganini esa yashirin menyuga joylaymiz.
+
+Ko'rinadigan qism: Chapda Logotip, o'rtada Bosh Sahifa, Siyosat, Texnologiya kabi 3 ta eng muhim kategoriya, o'ngda esa Qidiruv ikonkachasi (🔍) va "Hamburger" menyu ikonkachasi (☰).
+
+Yashirin qism: "Hamburger" menyusini bosganda, chetdan chiroyli panel chiqib keladi va uning ichida qolgan barcha kategoriyalar, tilni o'zgartirish, ijtimoiy tarmoq havolalari va boshqa ma'lumotlar joylashgan bo'ladi.
+
+Bu variantning afzalligi: Interfeys juda toza va ozoda ko'rinadi.
+Kamchiligi: Foydalanuvchilar boshqa kategoriyalarni ko'rish uchun qo'shimcha harakat qilishlari kerak bo'ladi.
+
+Umumiy Tavsiyalar:
+Bo'sh Joydan Qo'rqmang: Elementlar orasida yetarlicha bo'sh joy (padding, margin) qoldiring. Bu dizaynni "nafas olish"iga yordam beradi.
+
+Ikonkalardan Foydalaning: "Bildirishnomalar" so'zi o'rniga faqat qo'ng'iroqcha (🔔) ikonkasi tursa, ancha ixcham bo'ladi.
+
+"Bosh Sahifa"ni olib tashlang: Ko'p saytlarda Logotipning o'zi Bosh sahifaga o'tish vazifasini bajaradi. Bu orqali bitta menyu punktidan xalos bo'lish mumkin.

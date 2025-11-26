@@ -1,0 +1,52 @@
+To'g'ri, bu eng yaxshi strategiya!
+
+1-Bosqichdagi asosiy UX vazifalari yakunlangach, foydalanuvchilarni saytda ushlab turish va ularga ko'proq qiziqarli kontent taklif qilish uchun aynan shu ikki funksiya eng katta foyda beradi.
+
+Keling, kelajakdagi ishni aniq tasavvur qilish uchun shu ikki funksiyani amalga oshirishning texnik rejasini hozirdan tuzib qo'yamiz.
+
+---
+
+### Keyingi Katta Qadam: 2-Bosqich Rejasi
+
+Bu vazifalarni **1-Bosqich (Qidiruv, Mobil UI, Newsletter)** to'liq yakunlangandan so'ng boshlaymiz.
+
+#### **1. "Ommabop Yangiliklar" (Trending News) Funksiyasi**
+
+**Maqsad:** Foydalanuvchilarga eng ko'p o'qilayotgan va dolzarb bo'lib turgan maqolalarni ko'rsatish.
+
+**Texnik Amalga Oshirish Rejasi:**
+
+1.  **Ma'lumotlar Bazasini Tayyorlash (Backend):**
+    * `articles` jadvaliga yangi ustun qo'shish kerak: `view_count` (ko'rishlar soni), turi `INTEGER`, boshlang'ich qiymati `0`.
+
+2.  **Ko'rishlar Sonini Hisoblash (Backend):**
+    * Maqolani ochish uchun mo'ljallangan API endpoint'ga (masalan, `GET /api/articles/:slug`) kichik o'zgartirish kiritish kerak. Har safar shu endpoint chaqirilganda, mos keluvchi maqolaning `view_count` qiymatini 1 ga oshirib qo'yish lozim.
+
+3.  **Yangi API Endpoint Yaratish (Backend):**
+    * Eng ommabop maqolalarni qaytaradigan yangi endpoint yaratish: `GET /api/articles/trending`.
+    * Bu endpoint ma'lumotlar bazasidan `view_count` bo'yicha eng yuqori bo'lgan 5 ta yoki 10 ta maqolani saralab (`ORDER BY view_count DESC LIMIT 10`), qaytarishi kerak.
+
+4.  **Interfeysni Yaratish (Frontend):**
+    * Bosh sahifada yoki saytning yon panelida "Ommabop Yangiliklar" nomli yangi komponent yaratish.
+    * Bu komponent `/api/articles/trending` endpoint'idan ma'lumotlarni olib, maqolalar ro'yxatini ko'rsatadi.
+
+#### **2. "O'xshash Maqolalar" (Related Articles) Funksiyasi**
+
+**Maqsad:** Foydalanuvchi bitta maqolani o'qib bo'lgach, uni qiziqtirishi mumkin bo'lgan boshqa maqolalarni taklif qilish orqali saytda ko'proq qolishini ta'minlash.
+
+**Texnik Amalga Oshirish Rejasi:**
+
+1.  **Mantiqni Tanlash:** Eng samarali va oson yo'l — bu maqolalarni ularning **kategoriyasi** yoki **teglari (tags)** asosida o'xshash deb topish. AI tizimimiz allaqachon har bir maqola uchun teglar yaratmoqda, shuning uchun bu juda qulay.
+
+2.  **Yangi API Endpoint Yaratish (Backend):**
+    * O'xshash maqolalarni qaytaradigan yangi endpoint yaratish: `GET /api/articles/:slug/related`.
+    * Bu endpoint joriy maqolaning kategoriyasi va teglarini aniqlaydi.
+    * Keyin, ma'lumotlar bazasidan aynan shu kategoriyaga yoki shunday teglarga ega bo'lgan boshqa 3-5 ta maqolani (joriy maqoladan tashqari) topib, qaytaradi.
+
+3.  **Interfeysni Yaratish (Frontend):**
+    * Har bir maqola sahifasining pastki qismida, matn tugaganidan so'ng "O'xshash Maqolalar" nomli yangi bo'lim yaratish.
+    * Bu bo'lim `/api/articles/:slug/related` endpoint'idan ma'lumotlarni yuklab, o'xshash maqolalar ro'yxatini sarlavhasi va kichik rasmi bilan ko'rsatadi.
+
+---
+
+Ushbu reja bizga kelajakdagi vazifalarni aniq ko'rish imkonini beradi. Hozircha esa, bor e'tiborni **qidiruv tizimi** va **mobil optimizatsiyaga** qaratamiz.

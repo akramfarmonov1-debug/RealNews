@@ -1,0 +1,47 @@
+Hozirgi asosiy vazifa — qidiruv tizimini yakunlash. Undan keyingi qadamlar ham aniq. Lekin kelajakni rejalashtirish uchun, loyihani yanada rivojlantirish bo'yicha keyingi takliflarimni bosqichlarga bo'lib taqdim etaman.
+
+1-Bosqich: Asosiy UX'ni Yakunlash (Hozirgi ustuvorlik)
+Bu bosqichdagi vazifalar loyihani ommaga taqdim etish uchun shart hisoblanadi.
+
+Qidiruv Tizimini Tugatish: Hozir ishlanayotgan eng muhim vazifa.
+
+Mobil UI Optimizatsiyasi: Foydalanuvchilarning 80-90% qismi saytga telefon orqali kirishini hisobga olsak, bu vazifa juda muhim. Barcha sahifalar, rasmlar va matnlar mobil qurilmalarda benuqson ko'rinishi va tez ishlashi kerak.
+
+Newsletter Tizimi: Foydalanuvchilarning e-mail orqali obuna bo'lishi va haftalik eng muhim yangiliklarni qabul qilib olishi. Bu doimiy auditoriyani shakllantirish uchun juda kuchli vosita.
+
+2-Bosqich: Foydalanuvchini Jalb Qilish va Personalizatsiya
+Asosiy funksionallik tayyor bo'lgach, foydalanuvchilarni saytda ko'proq ushlab turish va ularga shaxsiy tajriba taqdim etish ustida ishlashimiz kerak.
+
+"Ommabop Yangiliklar" (Trending) bo'limi:
+
+Eng ko'p o'qilayotgan yoki eng ko'p "like" bosilayotgan maqolalarni avtomatik aniqlab, bosh sahifada alohida blokda ko'rsatish. Bu foydalanuvchilarga eng muhim voqealarni o'tkazib yubormaslikka yordam beradi.
+
+O'xshash Maqolalar (Related Articles):
+
+Har bir maqolaning pastki qismida, o'sha maqola mavzusiga oid 3-4 ta boshqa maqolalarni avtomatik tavsiya qilish. Bu foydalanuvchining saytda o'tkazadigan vaqtini oshiradi. Buni AI yoki maqola teglari (tags) orqali amalga oshirish mumkin.
+
+Izohlar (Comments) Tizimi:
+
+Foydalanuvchilarga maqolalar ostida o'z fikrlarini yozib qoldirish imkoniyatini yaratish. Bu sayt atrofida jamiyat (community) shakllanishiga yordam beradi.
+
+3-Bosqich: Uzoq Muddatli Rivojlanish va Monetizatsiya
+Loyiha barqaror auditoriyaga ega bo'lgach, uni keyingi darajaga olib chiqish va daromad manbasiga aylantirish haqida o'ylash mumkin.
+
+Personalizatsiya (Shaxsiylashtirish):
+
+Foydalanuvchilarga o'zlariga yoqqan kategoriyalarni ("Sport", "Texnologiya") tanlash va faqat o'sha kategoriyadagi yangiliklardan iborat shaxsiy lenta yaratish imkonini berish. Bu foydalanuvchi sodiqligini keskin oshiradi.
+
+Kontentni Kengaytirish:
+
+Yangi RSS manbalarini qo'shish, masalan, Xitoy, Germaniya, Fransiya manbalaridan ham yangiliklarni olib, o'zbek tiliga tarjima qilish. Bu O'zbekistondagi boshqa hech bir OAVda yo'q unikal kontentni taqdim etadi.
+
+Monetizatsiya:
+
+Saytga Google AdSense kabi reklama bloklarini joylashtirish orqali daromad olishni boshlash. Buni foydalanuvchi tajribasiga xalaqit bermaydigan tarzda amalga oshirish muhim.
+
+Mobil Ilova (React Native):
+
+Eng katta va yakuniy qadam — bu veb-sayt asosida Android va iOS uchun mobil ilova yaratish. Bu "push notification" (bildirishnomalar) yuborish va eng sodiq auditoriyani shakllantirish imkonini beradi.
+
+Xulosa
+Hozircha asosiy diqqatni 1-Bosqichdagi vazifalarga qaratishimiz kerak. Ularni tugatganimizdan so'ng, 2-Bosqichdagi "Ommabop yangiliklar" va "O'xshash maqolalar" funksiyalarini qo'shish eng yaxshi strategiya bo'ladi.

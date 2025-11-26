@@ -1,0 +1,66 @@
+Ajoyib tanlov! Siz loyihani shunchaki yangiliklar saytidan **zamonaviy, interaktiv va shaxsiylashtirilgan media platformasiga** aylantiradigan eng kuchli uchta funksiyani tanladingiz.
+
+Bu "RealNews"ning keyingi avlodi uchun poydevor bo'ladi.
+
+Keling, ushbu uchta katta vazifani amalga oshirish uchun aniq texnik reja va yo'l xaritasini tuzib chiqamiz.
+
+---
+
+### Yangi Yo'l Xaritasi: RealNews 2.0
+
+#### **1-Modul: Progressive Web App (PWA) Integratsiyasi**
+
+**Maqsad:** Saytni mobil ilovaga aylantirish, offlayn rejimda ishlashini ta'minlash va push-bildirishnomalar uchun zamin yaratish.
+
+**Texnik Reja:**
+
+1.  **Web App Manifest (`manifest.json`) yaratish (Frontend):**
+    * Ilovaning nomini (`RealNews`), ikonkalarni (har xil o'lchamdagi), asosiy ranglarini va boshlang'ich URL'ini belgilaymiz. Bu telefon "ishchi stoli"ga o'rnatilganda qanday ko'rinishini belgilaydi.
+2.  **Service Worker (`service-worker.js`) yaratish va sozlash (Frontend):**
+    * Bu PWA'ning "miyasi". U saytning asosiy resurslarini (CSS, JavaScript, logotip) va so'nggi 10-15 ta yangilikni qurilma xotirasiga keshlash (cache) uchun dasturlashtiriladi.
+    * Natijada, foydalanuvchi internetsiz qolganda ham sayt ochiladi va so'nggi yangiliklarni o'qiy oladi.
+3.  **Push-Bildirishnomalar Tizimi (Backend & Frontend):**
+    * **Backend:** Foydalanuvchilarning push-obunalarini (subscription) saqlash uchun yangi API va ma'lumotlar bazasida jadval yaratiladi.
+    * **Backend:** Yangi "shoshilinch xabar" (breaking news) chiqqanda, barcha obunachilarga bildirishnoma yuboradigan mantiq `web-push` kutubxonasi yordamida dasturlashtiriladi.
+    * **Frontend:** Foydalanuvchiga "Yangiliklardan xabardor bo'lishni istaysizmi?" degan so'rov chiqarib, uning ruxsatini olish va obunani serverga yuborish.
+
+---
+
+#### **2-Modul: "Stories" Formati**
+
+**Maqsad:** Foydalanuvchilarga kunning eng muhim yangiliklarini tez va qulay formatda yetkazish.
+
+**Texnik Reja:**
+
+1.  **"Kun Yangiliklari"ni tanlash mantig'i (Backend):**
+    * Har kuni bir marta avtomatik ishga tushadigan skript yaratiladi. U oxirgi 24 soat ichida eng ko'p o'qilgan yoki admin tomonidan belgilangan 5-7 ta maqolani tanlab oladi.
+2.  **"Story" Kontentini Generatsiya Qilish (Backend):**
+    * Tanlab olingan har bir maqola uchun Gemini AI yordamida uning matnidan 1-2 gaplik, "story" formatiga mos qisqa va qiziqarli qism ajratib olinadi.
+3.  **Yangi API Endpoint (`/api/stories`) (Backend):**
+    * Ushbu endpoint kunning "story"lari uchun tayyorlangan ma'lumotlarni (rasm, qisqa matn, asl maqolaga havola) qaytaradi.
+4.  **"Stories" Komponentini Yaratish (Frontend):**
+    * Bosh sahifada Instagram'dagidek dumaloq "story" ikonkalari bloki yaratiladi.
+    * Bosilganda, `react-insta-stories` kabi kutubxona yordamida to'liq ekranli, avtomatik almashadigan "story"lar ko'rsatiladi.
+
+---
+
+#### **3-Modul: "Siz Uchun Tavsiyalar" Lentasi**
+
+**Maqsad:** Har bir foydalanuvchiga uning qiziqishlariga mos, shaxsiy yangiliklar lentasini taqdim etish.
+
+**Texnik Reja:**
+
+1.  **Foydalanuvchi Faolligini Kuzatish (Backend):**
+    * Ma'lumotlar bazasida `user_views` nomli yangi jadval yaratiladi. Tizimga kirgan foydalanuvchi qaysi maqolani yoki kategoriyani o'qiganini shu jadvalga yozib boramiz.
+2.  **Tavsiya Algoritmini Yaratish (V1 - Oddiy) (Backend):**
+    * Foydalanuvchining oxirgi o'qigan 50 ta maqolasini tahlil qilib, uning eng ko'p qiziqqan kategoriyalarini aniqlaymiz (masalan, "Texnologiya" - 40%, "Sport" - 25% va hokazo).
+3.  **Yangi API Endpoint (`/api/feed/for-you`) (Backend):**
+    * Bu endpoint faqat tizimga kirgan foydalanuvchilar uchun ishlaydi. U yuqoridagi algoritm asosida yangi maqolalarni saralab, foydalanuvchining qiziqishlariga mos tartibda qaytaradi.
+4.  **Shaxsiy Lenta Sahifasi (Frontend):**
+    * Saytda "Siz Uchun" yoki "Tavsiyalar" nomli yangi sahifa yoki bo'lim yaratiladi. U `/api/feed/for-you`'dan ma'lumotlarni olib, foydalanuvchiga uning shaxsiy lentasini ko'rsatadi.
+
+### Tavsiya etiladigan ketma-ketlik:
+
+1.  **PWA:** Bu butun sayt uchun texnologik poydevor. Buni birinchi qilish saytning umumiy qiymatini oshiradi.
+2.  **"Stories" Formati:** Bu vizual jihatdan eng tez natija beradigan va foydalanuvchilarni darhol jalb qila oladigan funksiya.
+3.  **Personalized Feed:** Bu eng murakkab, lekin foydalanuvchini uzoq muddatda saqlab qolish uchun eng kuchli funksiya. Uni oxirida, saytda ma'lum bir foydalanuvchilar bazasi paydo bo'lgandan keyin qilish mantiqan to'g'ri.
