@@ -2,7 +2,6 @@ import { parseStringPromise } from 'xml2js';
 import { storage } from '../storage';
 import { aiGenerator } from './ai-generator';
 import { telegramBot } from './telegram-bot';
-import { unsplashService } from './unsplash';
 import type { InsertArticle } from '@shared/schema';
 
 interface RssItem {
@@ -59,23 +58,49 @@ export class RssParser {
   private extractImageUrl(item: RssItem): string | undefined {
     // Try to get image from media:content
     if (item['media:content'] && item['media:content'][0]) {
-      return item['media:content'][0].$.url;
+      const mediaContent = item['media:content'][0];
+      if (mediaContent.$ && mediaContent.$.url) {
+        return mediaContent.$.url;
+      }
+    }
+    
+    // Try to get image from media:thumbnail
+    if (item['media:thumbnail'] && item['media:thumbnail'][0]) {
+      const thumbnail = item['media:thumbnail'][0];
+      if (thumbnail.$ && thumbnail.$.url) {
+        return thumbnail.$.url;
+      }
     }
     
     // Try to get image from enclosure
-    if (item.enclosure && item.enclosure[0] && item.enclosure[0].$.type?.startsWith('image/')) {
-      return item.enclosure[0].$.url;
+    if (item.enclosure && item.enclosure[0]) {
+      const enclosure = item.enclosure[0];
+      if (enclosure.$ && enclosure.$.url) {
+        const type = enclosure.$.type || '';
+        if (type.startsWith('image/') || enclosure.$.url.match(/\.(jpg|jpeg|png|gif|webp)/i)) {
+          return enclosure.$.url;
+        }
+      }
     }
     
-    // Try to extract image from description
-    if (item.description && item.description[0]) {
-      const imgMatch = item.description[0].match(/<img[^>]+src="([^">]+)"/);
+    // Try to extract image from content:encoded
+    if (item['content:encoded'] && item['content:encoded'][0]) {
+      const imgMatch = item['content:encoded'][0].match(/<img[^>]+src=["']([^"'>]+)["']/);
       if (imgMatch) {
         return imgMatch[1];
       }
     }
     
-    return undefined;
+    // Try to extract image from description
+    if (item.description && item.description[0]) {
+      const imgMatch = item.description[0].match(/<img[^>]+src=["']([^"'>]+)["']/);
+      if (imgMatch) {
+        return imgMatch[1];
+      }
+    }
+    
+    // Default image for each category - placeholder
+    return "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=600&fit=crop";
   }
 
   private cleanContent(content: string): string {
@@ -124,26 +149,13 @@ export class RssParser {
           ? this.cleanContent(item.description[0])
           : undefined;
         
-        // Try to get image from RSS feed first, then fallback to Unsplash
-        let imageUrl = this.extractImageUrl(item);
+        // RSS feeddan rasm olish (Unsplash ishlatilmaydi)
+        const imageUrl = this.extractImageUrl(item);
         
-        // Initialize attribution fields
-        let imageAttribution: string | undefined;
-        let imageAuthor: string | undefined;
-        let imageAuthorUrl: string | undefined;
-        
-        if (!imageUrl) {
-          const category = await storage.getCategoryById(categoryId);
-          if (category) {
-            const unsplashData = await unsplashService.getArticleImage(title, category.name);
-            if (unsplashData) {
-              imageUrl = unsplashData.imageUrl;
-              imageAttribution = unsplashData.attribution;
-              imageAuthor = unsplashData.author;
-              imageAuthorUrl = unsplashData.authorUrl;
-            }
-          }
-        }
+        // Attribution fields (RSS rasmlar uchun kerak emas)
+        const imageAttribution: string | undefined = undefined;
+        const imageAuthor: string | undefined = undefined;
+        const imageAuthorUrl: string | undefined = undefined;
         
         const publishedAt = item.pubDate?.[0] 
           ? new Date(item.pubDate[0])

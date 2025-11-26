@@ -7,6 +7,13 @@ interface TelegramMessage {
   disable_web_page_preview?: boolean;
 }
 
+interface TelegramPhoto {
+  chat_id: string;
+  photo: string;
+  caption: string;
+  parse_mode?: "HTML" | "Markdown";
+}
+
 export class TelegramBot {
   private botToken: string;
   private chatId: string;
@@ -26,7 +33,7 @@ export class TelegramBot {
     return !!(this.botToken && this.chatId);
   }
 
-  private async sendRequest(method: string, data: TelegramMessage): Promise<boolean> {
+  private async sendRequest(method: string, data: TelegramMessage | TelegramPhoto): Promise<boolean> {
     if (!this.isConfigured()) {
       console.warn("Telegram Bot not configured, skipping message");
       return false;
@@ -53,6 +60,26 @@ export class TelegramBot {
       console.error("Error sending Telegram message:", error);
       return false;
     }
+  }
+
+  private formatPhotoCaption(article: ArticleWithCategory, siteUrl: string = "https://realnews.uz"): string {
+    const categoryIcon = this.getCategoryIcon(article.category.name);
+    const articleUrl = `${siteUrl}/article/${article.slug}`;
+    
+    // Telegram photo caption (max 1024 characters)
+    const caption = `
+${categoryIcon} <b>${article.category.name}</b>
+
+<b>${article.title}</b>
+
+${article.description ? article.description.substring(0, 300) + "..." : ""}
+
+<a href="${articleUrl}">To'liq o'qish</a>
+
+#${article.category.slug} #RealNews
+`.trim();
+
+    return caption.substring(0, 1024);
   }
 
   private formatArticleMessage(article: ArticleWithCategory, siteUrl: string = "https://realnews.uz"): string {
@@ -106,16 +133,44 @@ ${article.description ? article.description.substring(0, 200) + "..." : ""}
       return false;
     }
 
-    const message = this.formatArticleMessage(article);
-    
-    const telegramMessage: TelegramMessage = {
-      chat_id: this.chatId,
-      text: message,
-      parse_mode: "HTML",
-      disable_web_page_preview: false
-    };
+    let success = false;
 
-    const success = await this.sendRequest("sendMessage", telegramMessage);
+    // Agar rasm mavjud bo'lsa, rasm bilan yuborish
+    if (article.imageUrl && !article.imageUrl.includes('unsplash.com')) {
+      const caption = this.formatPhotoCaption(article);
+      
+      const telegramPhoto: TelegramPhoto = {
+        chat_id: this.chatId,
+        photo: article.imageUrl,
+        caption: caption,
+        parse_mode: "HTML"
+      };
+
+      success = await this.sendRequest("sendPhoto", telegramPhoto);
+      
+      // Agar rasm yuborishda xatolik bo'lsa, oddiy xabar yuborish
+      if (!success) {
+        console.log(`Rasm yuborishda xatolik, oddiy xabar yuborilmoqda: ${article.title}`);
+        const message = this.formatArticleMessage(article);
+        const telegramMessage: TelegramMessage = {
+          chat_id: this.chatId,
+          text: message,
+          parse_mode: "HTML",
+          disable_web_page_preview: false
+        };
+        success = await this.sendRequest("sendMessage", telegramMessage);
+      }
+    } else {
+      // Rasm yo'q bo'lsa, oddiy xabar yuborish
+      const message = this.formatArticleMessage(article);
+      const telegramMessage: TelegramMessage = {
+        chat_id: this.chatId,
+        text: message,
+        parse_mode: "HTML",
+        disable_web_page_preview: false
+      };
+      success = await this.sendRequest("sendMessage", telegramMessage);
+    }
     
     if (success) {
       console.log(`✅ Telegram'ga yuborildi: ${article.title}`);

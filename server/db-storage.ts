@@ -536,4 +536,20 @@ export class DbStorage implements IStorage {
   async deleteStoryItem(id: string): Promise<void> {
     await this.db.delete(storyItems).where(eq(storyItems.id, id));
   }
+
+  // Article admin methods
+  async updateArticle(id: string, data: Partial<InsertArticle>): Promise<Article> {
+    const result = await this.db
+      .update(articles)
+      .set(data)
+      .where(eq(articles.id, id))
+      .returning();
+    
+    if (!result[0]) throw new Error("Article not found");
+    return result[0];
+  }
+
+  async deleteArticle(id: string): Promise<void> {
+    await this.db.delete(articles).where(eq(articles.id, id));
+  }
 }
