@@ -161,37 +161,13 @@ export class RssParser {
           ? new Date(item.pubDate[0])
           : new Date();
         
-        // AI orqali maqolani yaxshilash va tarjima qilish
-        let enhancedArticle: { title: string; slug: string; description?: string; content?: string } = {
+        // Maqolani saqlab qo'yish (AI tarjimasiz)
+        const enhancedArticle: { title: string; slug: string; description?: string; content?: string } = {
           title,
           slug,
           description,
           content
         };
-
-        try {
-          if (process.env.GEMINI_API_KEY && content && aiGenerator) {
-            // Rate limiting: 4 sekund kutish (15 so'rov/daqiqada = 4 sekund oralig'i)
-            await new Promise(resolve => setTimeout(resolve, 4000));
-            
-            const category = await storage.getCategoryById(categoryId);
-            if (category) {
-              const enhanced = await aiGenerator.translateAndRewriteArticle(
-                title,
-                content,
-                category
-              );
-              enhancedArticle = {
-                title: enhanced.title,
-                slug: enhanced.slug,
-                description: enhanced.description,
-                content: enhanced.content
-              };
-            }
-          }
-        } catch (error) {
-          console.error("AI enhancement failed, using original content:", error);
-        }
 
         const article: InsertArticle = {
           title: enhancedArticle.title,
