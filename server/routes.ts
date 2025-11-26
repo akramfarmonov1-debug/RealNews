@@ -775,5 +775,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   }, 30 * 60 * 1000); // 30 minutes
 
+  // Initial RSS fetch on server startup (5 seconds delay to ensure everything is ready)
+  setTimeout(async () => {
+    try {
+      console.log("Starting initial RSS feed fetch on startup...");
+      await rssParser.fetchAllFeeds();
+      console.log("Initial RSS feed fetch completed successfully!");
+    } catch (error) {
+      console.error("Error during initial RSS fetch:", error);
+    }
+  }, 5000);
+
   return httpServer;
 }

@@ -97,7 +97,7 @@ export class RssParser {
         return [];
       }
       
-      const items = parsed.rss.channel[0].item;
+      const items = parsed.rss.channel[0].item.slice(0, 5); // Har feeddan max 5 ta maqola
       const articles: InsertArticle[] = [];
       
       for (const item of items) {
@@ -159,6 +159,9 @@ export class RssParser {
 
         try {
           if (process.env.GEMINI_API_KEY && content && aiGenerator) {
+            // Rate limiting: 4 sekund kutish (15 so'rov/daqiqada = 4 sekund oralig'i)
+            await new Promise(resolve => setTimeout(resolve, 4000));
+            
             const category = await storage.getCategoryById(categoryId);
             if (category) {
               const enhanced = await aiGenerator.translateAndRewriteArticle(

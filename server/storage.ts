@@ -144,26 +144,33 @@ export class MemStorage implements IStorage {
 
   private async initializeRSSFeeds() {
     const rssFeeds = [
-      // O'zbekiston
-      { url: "https://kun.uz/rss", name: "Kun.uz", categorySlug: "ozbekiston" },
-      { url: "https://uza.uz/rss", name: "UzA", categorySlug: "ozbekiston" },
-      { url: "https://daryo.uz/rss", name: "Daryo.uz", categorySlug: "ozbekiston" },
+      // O'zbekiston - BBC Russian va Al Jazeera (AI tarjima qiladi)
+      { url: "https://feeds.bbci.co.uk/russian/rss.xml", name: "BBC Russian", categorySlug: "ozbekiston" },
+      { url: "https://www.aljazeera.com/xml/rss/all.xml", name: "Al Jazeera", categorySlug: "ozbekiston" },
       
       // Dunyo (working RSS feeds)
-      { url: "https://feeds.skynews.com/feeds/rss/world.xml", name: "Sky News World", categorySlug: "dunyo" },
-      { url: "https://feeds.reuters.com/reuters/worldNews", name: "Reuters World", categorySlug: "dunyo" },
+      { url: "https://feeds.bbci.co.uk/news/world/rss.xml", name: "BBC World", categorySlug: "dunyo" },
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", name: "NY Times World", categorySlug: "dunyo" },
       
       // Sport
-      { url: "https://www.championat.com/rss/news.xml", name: "Championat.com", categorySlug: "sport" },
-      { url: "https://sport24.ru/rss/news.xml", name: "Sport24", categorySlug: "sport" },
+      { url: "https://feeds.bbci.co.uk/sport/rss.xml", name: "BBC Sport", categorySlug: "sport" },
+      { url: "https://www.espn.com/espn/rss/news", name: "ESPN News", categorySlug: "sport" },
       
       // Texnologiya
-      { url: "https://feeds.techcrunch.com/TechCrunch/", name: "TechCrunch", categorySlug: "texnologiya" },
-      { url: "https://feeds.reuters.com/reuters/technologyNews", name: "Reuters Tech", categorySlug: "texnologiya" },
+      { url: "https://feeds.bbci.co.uk/news/technology/rss.xml", name: "BBC Technology", categorySlug: "texnologiya" },
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml", name: "NY Times Tech", categorySlug: "texnologiya" },
       
       // Iqtisodiyot
-      { url: "https://www.reuters.com/arc/outboundfeeds/rss/tag/business-news/?outputType=xml", name: "Reuters Business", categorySlug: "iqtisodiyot" },
-      { url: "https://feeds.finance.yahoo.com/rss/2.0/headline", name: "Yahoo Finance", categorySlug: "iqtisodiyot" }
+      { url: "https://feeds.bbci.co.uk/news/business/rss.xml", name: "BBC Business", categorySlug: "iqtisodiyot" },
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml", name: "NY Times Business", categorySlug: "iqtisodiyot" },
+      
+      // Madaniyat
+      { url: "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml", name: "BBC Arts", categorySlug: "madaniyat" },
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Arts.xml", name: "NY Times Arts", categorySlug: "madaniyat" },
+      
+      // Siyosat
+      { url: "https://feeds.bbci.co.uk/news/politics/rss.xml", name: "BBC Politics", categorySlug: "siyosat" },
+      { url: "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml", name: "NY Times Politics", categorySlug: "siyosat" }
     ];
 
     for (const feedData of rssFeeds) {
