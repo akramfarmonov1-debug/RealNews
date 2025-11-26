@@ -10,6 +10,8 @@ interface RssItem {
   link: string[];
   pubDate: string[];
   'media:content'?: Array<{ $: { url: string } }>;
+  'media:thumbnail'?: Array<{ $: { url: string } }>;
+  'content:encoded'?: string[];
   enclosure?: Array<{ $: { url: string, type: string } }>;
 }
 
